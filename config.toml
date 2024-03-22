@@ -1,3 +1,6 @@
+# https://www.getzola.org/documentation/getting-started/configuration/
+
+# [main]
 # The URL the site will be built for
 base_url = "https://fatamatsu.net"
 
@@ -7,10 +10,28 @@ compile_sass = true
 # Whether to build a search index to be used later on by a JavaScript library
 build_search_index = false
 
+# Site theme
+# theme = ""
+
+# Configuration of Markdown content rendering
 [markdown]
-# Whether to do syntax highlighting
-# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
+# Provide syntax highlighting to code blocks
 highlight_code = true
 
+# Configuration of the link checker
+[link_checker]
+
+# Various slugification strategies
+[slugify]
+
+# Site search indexing
+[search]
+
+# Optional translation object for the default language
+[translations]
+
+# Additional languages definition
+[languages]
+
+# User-defined custom variables accessible in all templates
 [extra]
-# Put all your custom variables here
