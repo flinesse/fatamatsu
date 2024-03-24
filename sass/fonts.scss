@@ -1,0 +1,39 @@
+/* -------------------------
+ * Custom fonts
+ * ------------------------- */
+
+@font-face {
+  font-family: 'Berkeley Mono';
+  font-style: normal;
+  font-weight: normal;
+  src:
+    url("fonts/BerkeleyMono-Regular.woff2") format("woff2"),
+    url("fonts/BerkeleyMono-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Berkeley Mono';
+  font-style: normal;
+  font-weight: bold;
+  src:
+    url("fonts/BerkeleyMono-Bold.woff2") format("woff2"),
+    url("fonts/BerkeleyMono-Bold.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Berkeley Mono';
+  font-style: italic;
+  font-weight: normal;
+  src:
+    url("fonts/BerkeleyMono-Italic.woff2") format("woff2"),
+    url("fonts/BerkeleyMono-Italic.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Berkeley Mono';
+  font-style: italic;
+  font-weight: bold;
+  src:
+    url("fonts/BerkeleyMonoBold-Italic.woff2") format("woff2"),
+    url("fonts/BerkeleyMonoBold-Italic.woff") format("woff");
+}
