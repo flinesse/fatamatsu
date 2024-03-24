@@ -1,4 +1,4 @@
-_Last Updated: 2024-03-21_ 
+_Last Updated: 2024-03-23_
 
 ### Quick Links
 - [Documentation](https://www.getzola.org/documentation)
@@ -91,7 +91,7 @@ template = "page.html"
 
 ### Sass
 
-[Sass](https://sass-lang.com/guide/) is a popular CSS preprocessor that adds special features (e.g., variables, nested rules) to facilitate the maintenance of large sets of CSS rules.
+Zola allows Sass compilation. [Sass](https://sass-lang.com/guide/) is a popular CSS[^1] preprocessor that adds special features (e.g., variables, nested rules) to facilitate the maintenance of large sets of CSS rules.
 
 Guide:
 - [Preprocessing](https://sass-lang.com/guide/#preprocessing)
@@ -102,6 +102,8 @@ Guide:
 - [Mixins](https://sass-lang.com/guide/#mixins)
 - [Inheritance](https://sass-lang.com/guide/#inheritance)
 - [Operators](https://sass-lang.com/guide/#operators)
+
+[^1]: CSS Reference: [https://developer.mozilla.org/en-US/docs/Web/CSS/Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference)
 
 ### Shortcodes
 
@@ -149,6 +151,14 @@ Docs:
   - [Built-ins](https://keats.github.io/tera/docs/#built-ins)
 
 Zola adds a few [filters](https://www.getzola.org/documentation/templates/overview/#built-in-filters) and [functions](https://www.getzola.org/documentation/templates/overview/#built-in-functions) in addition to Tera's built-ins.
+
+#### TLDR; Modularity in Zola
+
+Use partials (Tera `include`) to bring in self-contained components of HTML
+
+Use macros (Tera `macro`) to add callable units of code that return argument-dependent pieces of HTML
+
+Use shortcodes (`templates/shortcodes`) to inline HTML and add macro-like functionality in `content/` (Markdown) files
 
 ### Sections and Pages
 
