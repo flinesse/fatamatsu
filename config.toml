@@ -11,7 +11,7 @@ compile_sass = true
 build_search_index = false
 
 # Site theme
-# theme = ""
+theme = "no-style-please"
 
 # Configuration of Markdown content rendering
 [markdown]
