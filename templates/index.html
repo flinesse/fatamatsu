@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 
+{% block header %}
+{% if title %}<h1>{{ config.title }}</h1>{% endif %}
+{% endblock header %}
+
 {% block content %}
 {{ section.content | safe }}
 
@@ -23,3 +27,6 @@
 {% endif %}
 {% endif %}
 {% endblock content %}
+
+{% block footer %}
+{% endblock footer %}

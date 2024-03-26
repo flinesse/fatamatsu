@@ -1,4 +1,4 @@
-_Last Updated: 2024-03-23_
+_Last Updated: 2024-03-25_
 
 ### Quick Links
 - [Documentation](https://www.getzola.org/documentation)
@@ -62,7 +62,7 @@ generate_feed = false
 # Your own data.
 [extra]
 ```
-Note: Section configuration options apply only to the direct pages, not to any subsections' pages.
+**Note**: Section configuration options apply only to the direct pages, not to any subsections' pages.
 
 Page front matter (defaults), available to templates as `page`:
 
@@ -143,6 +143,7 @@ Docs:
   - [Introduction](https://keats.github.io/tera/docs/#introduction)
     - {{ and }} for expressions
     - {% and %} for statements
+      - {%- to trim whitespace before a statement and -%} to trim whitespace after
     - {# and #} for comments
   - [Data structures](https://keats.github.io/tera/docs/#data-structures)
   - [Manipulating data](https://keats.github.io/tera/docs/#manipulating-data)
@@ -154,11 +155,17 @@ Zola adds a few [filters](https://www.getzola.org/documentation/templates/overvi
 
 #### TLDR; Modularity in Zola
 
+Use inheritance (Tera `extends`) to replicate parent templates while tailoring their labeled `block` contents
+
 Use partials (Tera `include`) to bring in self-contained components of HTML
 
 Use macros (Tera `macro`) to add callable units of code that return argument-dependent pieces of HTML
 
 Use shortcodes (`templates/shortcodes`) to inline HTML and add macro-like functionality in `content/` (Markdown) files
+
+**Note**: Mixing usage of `extends` and `include` is generally not recommended as Tera's current parser does not embed `include`d templates in a shared AST but rather treats them as separate nodes[^2]. This means that `include`'s functionality is a lot less refined until the interop with `extends` is fully supported. Currently, you cannot include templates that inherit others nor overwrite `blocks` defined in an included template's namespace.
+
+[^2]: Author's [comment](https://github.com/Keats/tera/issues/454#issuecomment-546947190). Other relevant issues: [#664](https://github.com/Keats/tera/issues/664), [#592](https://github.com/Keats/tera/issues/592).
 
 ### Sections and Pages
 

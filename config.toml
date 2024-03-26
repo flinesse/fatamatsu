@@ -1,10 +1,16 @@
 # https://www.getzola.org/documentation/getting-started/configuration/
 
 # [main]
-# The URL the site will be built for
+# The URL that this site will be built for
 base_url = "https://fatamatsu.net"
 
-# Whether to automatically compile all Sass files in the sass directory
+# Default site metadata
+title = "Joshua Lin"
+description = "Software Engineer, Lifelong Student, and Child of the Internet"
+default_language = "en"
+author = "Joshua Lin"
+
+# Whether to automatically compile all Sass files in the `sass/` directory
 compile_sass = true
 
 # Whether to build a search index to be used later on by a JavaScript library
@@ -35,3 +41,6 @@ highlight_code = true
 
 # User-defined custom variables accessible in all templates
 [extra]
+handle = "flinesse"  # Alternate name/id of the author
+
+page_titles = "combined"  # How page titles should be displayed ("page", "site", "combined")

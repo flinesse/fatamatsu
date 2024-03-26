@@ -1,0 +1,78 @@
+{%- import "macros.html" as macros -%}
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+
+    {% if page %}
+        {% set url = macros::url(page=page, site=config) %}
+        {% set title = macros::title(page=page, site=config) %}
+        {% set description = macros::description(page=page, site=config) %}
+        {% set author = macros::author(page=page, site=config) %}
+        {% set icon = macros::icon(page=page, site=config) %}
+    {% elif section %}
+        {% set url = macros::url(page=section, site=config) %}
+        {% set title = macros::title(page=section, site=config) %}
+        {% set description = macros::description(page=section, site=config) %}
+        {% set author = macros::author(page=section, site=config) %}
+        {% set icon = macros::icon(page=section, site=config) %}
+    {% endif %}
+
+    <title>{%- if title -%} {{ title }} {%- else -%} Page Not Found (404) {%- endif -%}</title>
+
+    {% block metatags %}
+    {% if title %}<meta name="title" content="{{ title }}">{% endif %}
+    {% if author %}<meta name="author" content="{{ author }}">{% endif %}
+    {% if description %}<meta name="description" content="{{ description }}">{% endif %}
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="{{ config.title }}">
+    {% if url %}<meta property="og:url" content="{{ url | safe }}">{% endif %}
+    {% if title %}<meta property="og:title" content="{{ title }}">{% endif %}
+    {% if description %}<meta property="og:description" content="{{ description }}">{% endif %}
+    {% if icon %}<meta property="og:image" content="{{ icon }}">{% endif %}
+    {% endblock metatags %}
+
+    {% block css %}
+    <link rel="stylesheet" href="{{ get_url(path='style.css', trailing_slash=false) | safe }}"/>
+    {% endblock css %}
+
+    <link rel="icon" type="image/x-icon" href="{{ get_url(path=config.extra.icon, trailing_slash=false) }}">
+
+    {% if page or section %}
+    <link rel="canonical" href="{{ url | safe }}">
+    {% endif %}
+
+    {% block feed %}
+    {% if config.generate_feed %}
+    <link rel="alternate" type="application/atom+xml" title="RSS" href="{{ get_url(path="atom.xml", trailing_slash=false) }}">
+    {% endif %}
+    {% endblock feed %}
+
+    {% block json_ld %}
+    {% if page or section %}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      {% if page -%}
+      "dateCreated": "{{ page.date }}",
+      "dateModified": "{{ page.updated }}",
+      {% endif -%}
+      "url": "{{ url | safe }}",
+      "mainEntity": {
+        "@type": "Person",
+        "name": "{{ config.author | safe }}",
+        "alternateName": "{{ config.extra.handle }}"
+      },
+      "headline": "{{ title | safe }}",
+      "description": "{{ description | safe }}",
+      "author": {
+        "@type": "Person",
+        "name": "{{ config.author | safe }}"
+      },
+    }
+    </script>
+    {% endif %}
+    {% endblock json_ld %}
+</head>

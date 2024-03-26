@@ -1,0 +1,49 @@
+{% macro url(page, site) %}
+    {%- if page.permalink -%}
+        {{ page.permalink }}
+    {%- elif site.base_url -%}
+        {{ site.base_url }}
+    {%- endif -%}
+{% endmacro url %}
+
+{% macro title(page, site) %}
+    {%- if site.extra.page_titles and site.extra.page_titles == "combined" -%}
+        {%- if page.title -%}
+            {{ page.title }} :: {{ site.title }}
+        {%- else -%}
+            {{ site.title }}
+        {%- endif -%}
+    {%- elif site.extra.page_titles and site.extra.page_titles == "page" -%}
+        {%- if page.title -%}
+            {{ page.title }}
+        {%- else -%}
+            {{ site.title }}
+        {%- endif -%}
+    {%- else -%}
+        {{ site.title }}
+    {%- endif -%}
+{% endmacro title %}
+
+{% macro description(page, site) %}
+    {%- if page.description -%}
+        {{ page.description | truncate(length=150) }}
+    {%- elif site.description -%}
+        {{ site.description | truncate(length=150) }}
+    {%- endif -%}
+{% endmacro description %}
+
+{% macro author(page, site) %}
+    {%- if page.authors -%}
+        {{ page.authors[0] }}
+    {%- elif site.author -%}
+        {{ site.author }}
+    {%- endif -%}
+{% endmacro author %}
+
+{% macro icon(page, site) %}
+    {%- if page.extra.icon -%}
+        {{ get_url(path=page.extra.icon, trailing_slash=false) }}
+    {%- elif site.extra.icon -%}
+        {{ get_url(path=site.extra.icon, trailing_slash=false) }}
+    {%- endif -%}
+{% endmacro icon %}
