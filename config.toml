@@ -41,6 +41,8 @@ highlight_code = true
 
 # User-defined custom variables accessible in all templates
 [extra]
+icon = "images/favicon.png"  # Path to site icon
+
 handle = "flinesse"  # Alternate name/id of the author
 
 page_titles = "combined"  # How page titles should be displayed ("page", "site", "combined")
