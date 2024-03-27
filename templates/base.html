@@ -1,22 +1,33 @@
 {%- import "macros.html" as macros -%}
 
 <!DOCTYPE html>
+<!-- BEGIN BASE TEMPLATE -->
 <html lang="{{ lang }}">
+    <!--meta-->
     {% include "partials/head.html" %}
-    <body theme="auto">
-        <div class="w">
+    <!--body-->
+    <body>
+        <div id="root">
+            <!--header-->
             <header>
-                {% block header %}
-                {% endblock header %}
+            {% block header %}
+            {% endblock header %}
             </header>
-            <main class="page-content" aria-label="Content">
+            <!--content-->
+            <div id="content" aria-label="Content">
+                <!-- BEGIN SUBTEMPLATE -->
+                <main class="page-content">
                 {% block content %}
                 {% endblock content %}
-            </main>
+                </main>
+                <!-- END SUBTEMPLATE -->
+            </div>
+            <!--footer-->
             <footer>
-                {% block footer %}
-                {% endblock footer %}
+            {% block footer %}
+            {% endblock footer %}
             </footer>
         </div>
     </body>
 </html>
+<!-- END BASE TEMPLATE -->

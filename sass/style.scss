@@ -1,32 +1,8 @@
 /* -------------------------
  * Main stylesheet
  * ------------------------- */
-@import "fonts";
+@use "fonts";
 
-// -------------- THEME SWITCHER -------------- //
-@mixin dark-appearance {
-  filter: invert(1);
-  img {
-    filter: invert(1);
-
-    &.invertable { filter: invert(0); }
-  }
-}
-
-body[theme="dark"] { @include dark-appearance; }
-
-
-@media (prefers-color-scheme: dark) {
-  body[theme="auto"] { @include dark-appearance; }
-}
-// -------------------------------------------- //
-
-// bg color is also needed in html in order to
-// block body's background propagation
-// see: https://stackoverflow.com/a/61265706
-html, body { background: white; }
-
-html { height: 100%; }
 
 body {
   color: black;
@@ -34,11 +10,20 @@ body {
   font-size: 16px;
   line-height: 1.4;
   margin: 0;
-  min-height: 100%;
+  min-height: 100vh;
   overflow-wrap: break-word;
 }
 
-.post-meta { text-align: right; }
+#root {
+  max-width: 640px;
+  margin: auto;
+  padding: 2ch;
+
+  & #content {
+    margin: 1ch auto;
+    background-color: #fff;
+  }
+}
 
 h2, h3, h4, h5, h6 { margin-top: 3rem; }
 
@@ -47,14 +32,6 @@ hr { margin: 2rem 0; }
 p { margin: 1rem 0; }
 
 li { margin: 0.4rem 0; }
-
-*:target { background: yellow; }
-
-.w {
-  max-width: 640px;
-  margin: 0 auto;
-  padding: 4rem 2rem;
-}
 
 hr {
   text-align: center;
@@ -98,6 +75,14 @@ img {
   margin: 0 auto;
 }
 
+
+/* --- Stuff I probably won't use ---*/
+*:target { background: yellow; }
+
+nav, .taxonomies { text-align: center; }
+
+.post-meta { text-align: right; }
+
 .footnote-definition {
   padding: 0 1rem;
   &:target {
@@ -109,4 +94,22 @@ img {
   }
 }
 
-nav, .taxonomies { text-align: center; }
+
+/* I do eventually want to support dark theming but
+ * not with a naive color inversion approach shown here
+// TODO: dynamic (mostly background) theming
+@mixin dark-appearance {
+  filter: invert(1);
+  img {
+    filter: invert(1);
+
+    &.invertable { filter: invert(0); }
+  }
+}
+
+body[theme="dark"] { @include dark-appearance; }
+
+@media (prefers-color-scheme: dark) {
+  body[theme="auto"] { @include dark-appearance; }
+}
+*/
