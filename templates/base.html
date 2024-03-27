@@ -7,6 +7,7 @@
     {% include "partials/head.html" %}
     <!--body-->
     <body>
+        <!-- BEGIN SUBTEMPLATE -->
         <div id="root">
             <!--header-->
             <header>
@@ -15,12 +16,10 @@
             </header>
             <!--content-->
             <div id="content" aria-label="Content">
-                <!-- BEGIN SUBTEMPLATE -->
                 <main class="page-content">
                 {% block content %}
                 {% endblock content %}
                 </main>
-                <!-- END SUBTEMPLATE -->
             </div>
             <!--footer-->
             <footer>
@@ -28,6 +27,7 @@
             {% endblock footer %}
             </footer>
         </div>
+        <!-- END SUBTEMPLATE -->
     </body>
 </html>
 <!-- END BASE TEMPLATE -->

@@ -12,17 +12,38 @@ body {
   margin: 0;
   min-height: 100vh;
   overflow-wrap: break-word;
+  background: linear-gradient(90deg, #fff 21px, transparent 1%) 50%, linear-gradient(#fff 21px, transparent 1%) 50%, #000;
+  background-attachment: fixed;
+  background-size: 22px 22px;
 }
 
 #root {
-  max-width: 640px;
+  max-width: 92ch;
   margin: auto;
-  padding: 2ch;
+  padding: 4ch 2ch;
 
   & #content {
-    margin: 1ch auto;
+    margin: auto;
     background-color: #fff;
+    padding: 2ch 8ch;
+    border: 2px solid;
+    box-shadow: 2px 2px #AAA;
+
+    @media (max-width: 720px) {
+      padding: 2ch 1ch;
+      border: none;
+      box-shadow: none;
+    }
   }
+}
+
+header {
+  padding: 1ch;
+  min-height: 12ch;
+}
+footer {
+  padding: 1ch;
+  min-height: 4ch;
 }
 
 h2, h3, h4, h5, h6 { margin-top: 3rem; }
@@ -113,3 +134,14 @@ body[theme="dark"] { @include dark-appearance; }
   body[theme="auto"] { @include dark-appearance; }
 }
 */
+
+
+// Hide scrollbar: https://www.w3schools.com/howto/howto_css_hide_scrollbars.asp
+*::-webkit-scrollbar {
+  display: none;  /* Chrome and Safari */
+}
+
+:root {
+  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+}
