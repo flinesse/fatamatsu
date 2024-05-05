@@ -18,18 +18,18 @@ body {
 }
 
 #root {
-  max-width: 92ch;
+  max-width: 96ch;
   margin: auto;
   padding: 4ch 2ch;
 
   & #content {
     margin: auto;
-    background-color: #fff;
-    padding: 2ch 8ch;
+    background-color: #faf9f6;
+    padding: 4ch 10ch;
     border: 2px solid;
     box-shadow: 2px 2px #AAA;
 
-    @media (max-width: 720px) {
+    @media (max-width: 800px) {
       padding: 2ch 1ch;
       border: none;
       box-shadow: none;
@@ -39,14 +39,14 @@ body {
 
 header {
   padding: 1ch;
-  min-height: 12ch;
+  min-height: 4ch;
 }
 footer {
   padding: 1ch;
   min-height: 4ch;
 }
 
-h2, h3, h4, h5, h6 { margin-top: 3rem; }
+h2, h3, h4, h5, h6 { margin-top: 2.5rem; }
 
 hr { margin: 2rem 0; }
 
